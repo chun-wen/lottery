@@ -2,29 +2,23 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { result } from "../../interfaces/I_user";
 
 interface valueProps {
-  value: {
-    result: result[];
-  };
+  result: result[];
 }
 
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    value: {
-      result: [],
-    },
+    result: [],
   } as valueProps,
   reducers: {
-    getUserList: (state, _action: PayloadAction<number>) => {},
-    success: (state, _action: any) => ({
-      ...state,
-      value: {
-        ...state.value,
-      },
+    getUserList: (state, action: PayloadAction<number>) => {},
+    updateUserList: (state, action: PayloadAction<any>) => {},
+    success: (state, action) => ({
+      result: [...action.payload],
     }),
   },
 });
 
-export const { getUserList, success } = userSlice.actions;
+export const { getUserList, updateUserList, success } = userSlice.actions;
 
 export default userSlice.reducer;
